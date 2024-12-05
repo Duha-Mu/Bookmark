@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <section class="py-5">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+
+            <header>
+                <h1 class="py-2 position-relative">Bookmarker</h1>
+            </header>
+
+            <div
+                class="bookmark-body w-100 p-3 py-4 mt-5 d-flex flex-column justify-content-center align-items-center gap-4">
+
+                <h2>
+                    <i class="fa-solid fa-bookmark"></i>
+                    Bookmark your favorite sites
+                    <i class="fa-solid fa-bookmark"></i>
+                </h2>
+
+                <div class="site-name w-100 d-flex flex-column justify-content-center">
+                    <label for="bookmarkName" class="pb-2 fw-semibold">
+                        <i class="fa-solid fa-book-bookmark pe-2"></i>
+                        Site Name
+                    </label>
+                    <input type="text" id="bookmarkName" oninput="validateName()" class="form-control" placeholder="Bookmark Name">
+                    <div class="alert alert-danger p-2 d-none mt-2" id="wrongName">
+                        <small>Please Site name must contain at least 3 characters</small>
+                      </div>
+                </div>
+
+                <div class="site-url w-100 d-flex flex-column justify-content-center">
+                    <label for="bookmarkURL" class="pb-2 fw-semibold">
+                        <i class="fa-solid fa-link pe-2"></i>
+                        Site Url
+                    </label>
+                    <input type="url" id="bookmarkURL" oninput=" validateUrl()" class="form-control" placeholder="Website URL">
+                    <div class="alert alert-danger p-2 d-none mt-2" id="wrongUrl">
+                        <small>Please enter a valid url</small>
+                      </div>
+                </div>
+                <button onclick="addBookMark()" class="btn btn-submit px-5" id="submitBtn">Submit</button>
+                <button onclick="updateBookMark()" class="btn btn-update d-none px-5 " id="updateBtn">Update</button>
+            </div>
+
+            <input type="text" id="searchInput" oninput="search(this.value)" class="form-control mt-5 w-50 mx-auto bg-secondary-subtle"
+                placeholder="Search..">
+            <table class="table mt-4 text-center bg-light">
+                <thead>
+                    <tr>
+                        <th class="text-capitalize">Index</th>
+                        <th class="text-capitalize">Website Name</th>
+                        <th class="text-capitalize">Visit</th>
+                        <th class="text-capitalize">Update</th>
+                        <th class="text-capitalize">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContent">
+                
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+
+                    <!-- ^ modal -->
+
+    <div class="modal d-none" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <div class="d-flex gap-2">
+                        <span style="width: 20px; height: 20px;" class="bg-danger rounded-circle"></span>
+                        <span style="width: 20px; height: 20px;" class="bg-warning rounded-circle"></span>
+                        <span style="width: 20px; height: 20px;" class="bg-success rounded-circle"></span>
+                    </div>
+                    <i id="closeBtn" onclick="closeModal()" style="cursor: pointer;" class="fa-solid fa-xmark fs-3"></i>
+                </div>
+                <div class="modal-body">
+                    <p> Site Name or Url is not valid, Please follow the rules below:</p>
+                    <p><i class="fa-solid fa-arrow-right"></i>  Site name must contain at least 3 characters</p>
+                    <p><i class="fa-solid fa-arrow-right"></i>  Site URL must be a valid one</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
